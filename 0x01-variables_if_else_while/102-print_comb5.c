@@ -1,44 +1,35 @@
 #include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
+
 /**
- * main - Entry point
- * Description: prints all possible combination of 2-digit numbers
- * Return: Always 0 (success)
+ * main - Printing combinations of two-digit numbers.
+ *
+ * Return: Always 0.
  */
 int main(void)
 {
-	int c, i, k, j;
+	int nb1, nb2;
 
-	for (c = 48; c <= 57; c++)
+	for (nb1 = 0; nb1 <= 98; nb1++)
 	{
-		for (i = 48; i <= 57; i++)
+		for (nb2 = nb1 + 1; nb2 <= 99; nb2++)
 		{
-			for (k = 48; k <= 57; k++)
-			{
-				for (j = 48; k <= 57; j++)
-				{
-					if (((k + j) > (c + i) && k >= c) || c < k)
-					{
-						putchar(c);
-						putchar(i);
-						putchar(' ');
-						putchar(k);
-						putchar(j);
+			putchar((nb1 / 10) + '0');
+			putchar((nb1 % 10) + '0');
+			putchar(' ');
+			putchar((nb2 / 10) + '0');
+			putchar((nb2 % 10) + '0');
 
-						if (c + i + k + j == 227 && c == 57)
-						{
-						break;
-						}
-						else
-						{
-						putchar(',');
-						putchar(' ');
-						}
-					}
-				}
-			}
+			if (nb1 == 98 && nb2 == 99)
+				break;
+
+			putchar(',');
+			putchar(' ');
 		}
 	}
+
 	putchar('\n');
+
 	return (0);
 }
